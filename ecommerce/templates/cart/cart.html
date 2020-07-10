@@ -752,16 +752,7 @@
                                 <td>
                                     <h2 class="td-color" name="price" >{{p}}</h2>
                                 </td>
-                                <script >
-                                    function multiplication()
-                                    {
-                                        var num1=document.getElementsByName('quantity').value;
-                                        var num2=document.getElementsByName("price").value="{{item.price}}";
-                                        var total=parseFloat(num1)*parseFloat(num2)
-                                        document.getElementById("screen1").innerHTML=total;
-                                    }
-                                    
-                                </script>
+                                
                             </tr>
                             {%endfor%}
                         </tbody>

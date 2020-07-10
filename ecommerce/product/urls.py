@@ -3,6 +3,6 @@ from product import views
 urlpatterns=[
 
     
-    path('list/',views.trending_product,name='trending item'),
+    #path('list/',views.trending_product,name='trending item'),
     
 ]

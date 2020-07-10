@@ -29,3 +29,13 @@ class Parallex(models.Model):
 def __str__(self):
     return self.tittle
 
+class Instagram(models.Model):
+    name              =models.CharField(max_length=100)
+    image             =models.ImageField(upload_to='instagram/image/')
+    text              =models.CharField(max_length=300,null=True,blank=True)
+    active            =models.BooleanField(default=True)
+    slug              =models.SlugField()
+    featured          =models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name

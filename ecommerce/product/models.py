@@ -80,3 +80,7 @@ class ProductImage(models.Model):
     def __unicode__(self):
         return self.products.id
 
+class Product_Type(models.Model):
+    name            =models.CharField(max_length=100)       
+    activate        =models.BooleanField(default=True)
+    feature        =models.BooleanField(default=True)

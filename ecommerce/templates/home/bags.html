@@ -2449,7 +2449,7 @@
                                 {%endfor%}
                                 <div class="back">
                                     <a href="product-page(no-sidebar).html"><img alt=""
-                                            src="{%static 'images/bags/9.jpg'%}"
+                                            src="{{photo.image.url}}"
                                             class="img-fluid blur-up lazyload bg-img"></a>
                                 </div>
                                 <div class="cart-detail"><a href="javascript:void(0)" title="Add to Wishlist"><i
@@ -2467,12 +2467,14 @@
                                 </a>
                                 <h4>${{trend.price}}</h4>
                                 <ul class="color-variant">
-                                    <li class="bg-light0"></li>
+                                    <li class="bg-light1"></li>
                                     <li class="bg-light1"></li>
                                     <li class="bg-light2"></li>
                                 </ul>
                                 <div class="add-btn">
                                     <a href="javascript:void(0)" onclick="openCart()" class="btn btn-outline">
+                                        <!-- <a href="/cart/update_cart/<int:id>/" class="btn btn-outline"> -->
+
                                         <i class="ti-shopping-cart"></i> add to cart
                                     </a>
                                 </div>
@@ -2996,7 +2998,7 @@
                                     <h4>{{item}}</h4>
                                 </a>
                                 <h4>
-                                    <span>{{item.Quantity}} x &#36;{{item.price}}</span>
+                                    <span>{{item.Quantity}} x &#x20B9;&nbsp;{{item.price}}</span>
                                 </h4>
                             </div>
                         </div>

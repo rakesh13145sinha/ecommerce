@@ -694,10 +694,13 @@
 
 
     <!--section start-->
+    
+    
     <section class="cart-section section-b-space">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
+                
                     <table class="table cart-table table-responsive-xs">
                         <thead>
                             <tr class="table-head">
@@ -710,14 +713,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for item in cart.product.all %}
+                           {%if  empty %}
+                             <h1 style="text-align: center;">{{msg}}</h1>
+                             {%else %}
+                            {% for item in cart.cartitem_set.all %}
                             <tr>
-                                {%for photo in item.productimage_set.all%}
+                                {%for photo in item.product.productimage_set.all%}
                                 <td>
                                     <a href="#"><img src="{{photo.image.url}}" alt=""></a>
                                 </td>
                                 {%endfor%}
-                                <td><a href="#">{{item.name}}</a>
+                                <td><a href="#">{{item.product.name}}</a>
                                     <div class="mobile-cart-content row">
                                         <div class="col-xs-3">
                                             <div class="qty-box">
@@ -727,36 +733,38 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-xs-3">
+                                        <div class="col-xs-3">
                                             <h2 class="td-color">$63.00</h2>
-                                        </div> -->
-                                        <!-- <div class="col-xs-3">
+                                        </div>
+                                        <div class="col-xs-3">
                                             <h2 class="td-color"><a href="#" class="icon"><i class="ti-close"></i></a>
                                             </h2>
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <h2>{{item.price}}</h2>
+                                    <h2>{{item.product.price}}</h2>
                                 </td>
                                 <td>
                                     <div class="qty-box">
                                         <div class="input-group">
                                             <input type="number" name="quantity" class="form-control input-number"
-                                                value="{{item.Quantity}}">
+                                                value="{{item.quantity}}">
                                         </div>
                                     </div>
                                 </td>
-                                <td><a href="#" class="icon"><i class="ti-close"></i></a></td>
-                                
+                                <td><a href="/cart/update_cart/{{item.id}}/ " class="icon"><i class="ti-close"></i></a></td>
+
                                 <td>
-                                    <h2 class="td-color" name="price" >{{p}}</h2>
+                                    <h2 class="td-color" name="price" >{{item.product_total}}</h2>
                                 </td>
                                 
                             </tr>
                             {%endfor%}
+                            {%endif%}
                         </tbody>
                     </table>
+                    
                     <table class="table cart-table table-responsive-md">
                         <tfoot>
                             <tr>
@@ -772,7 +780,7 @@
                 </div>
             </div>
             <div class="row cart-buttons">
-                <div class="col-6"><a href="#" class="btn btn-solid">continue shopping</a></div>
+                <div class="col-6"><a href="/" class="btn btn-solid">continue shopping</a></div>
                 <div class="col-6"><a href="#" class="btn btn-solid">check out</a></div>
             </div>
         </div>

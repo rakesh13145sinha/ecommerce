@@ -844,19 +844,22 @@
                                             {% for photo in trend.productimage_set.all %}
                                             <div class="front">
                                                 
-                                                <a href="product-page(no-sidebar).html">
+                                                <a href="/product/detail/{{trend.id}}/">
                                                     <img alt="" src="{{photo.image.url}}"
                                                         class="img-fluid blur-up lazyload bg-img">
                                                 </a>
                                                 
                                             </div>
                                             {%endfor%}
+                                            {% for photo in trend.productimage_set.all %}
+
                                             <div class="back">
-                                                <a href="product-page(no-sidebar).html">
-                                                    <img alt="" src="{%static 'images/bags/9.jpg'%}"
+                                                <a href="/product/detail/{{trend.id}}/">
+                                                    <img alt="" src="{{photo.image.url}}"
                                                         class="img-fluid blur-up lazyload bg-img">
                                                 </a>
                                             </div>
+                                            {%endfor%}
                                             <div class="cart-detail">
                                                 <a href="javascript:void(0)" title="Add to Wishlist">
                                                     <i class="ti-heart" aria-hidden="true"></i>
@@ -874,7 +877,7 @@
                                             <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                     class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
+                                            <a href="/product/detail/{{trend.id}}/">
                                                 <h6>{{trend.name}}</h6>
                                             </a>
                                             <h4>₹{{trend.newprice}} <del>₹{{trend.price}}</del></h4>
@@ -884,7 +887,9 @@
                                                 <li class="bg-light2"></li>
                                             </ul>
                                             <div class="add-btn">
-                                                <a href="javascript:void(0)" onclick="openCart()"
+                                                <!-- <a href="javascript:void(0)" onclick="openCart()"
+                                                    class="btn btn-outline"> -->
+                                                    <a href="/cart/update_cart/{{trend.id}}/"
                                                     class="btn btn-outline">
                                                     <i class="ti-shopping-cart"></i> add to cart
                                                 </a>
@@ -1924,14 +1929,14 @@
                                 {%if trend.new == True %}
                                 <div class="media">
                                     {% for photo in trend.productimage_set.all%}
-                                    <a href="product-page(no-sidebar).html"><img alt=""
+                                    <a href="/product/detail/{{trend.id}}/"><img alt=""
                                             class="img-fluid blur-up lazyload" src="{{photo.image.url}}"></a>
                                             {%endfor%}
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                 class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                 class="fa fa-star"></i></div>
-                                        <a href="product-page(no-sidebar).html">
+                                        <a href="/product/detail/{{trend.id}}/">
                                             <h6>{{trend.name}}</h6>
                                         </a>
                                         <h4>${{trend.price}}</h4>
@@ -2050,13 +2055,13 @@
                                     <div class="img-wrapper">
                                         {%for photo in trend.productimage_set.all%}
                                         <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img alt=""
+                                            <a href="/product/detail/{{trend.id}}/"><img alt=""
                                                     src="{{photo.image.url}}"
                                                     class="img-fluid blur-up lazyload bg-img"></a>
                                         </div>
                                         {%endfor%}
                                         <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img alt=""
+                                            <a href="/product/detail/{{trend.id}}/"><img alt=""
                                                     src="{%static 'images/bags/6.jpg'%}"
                                                     class="img-fluid blur-up lazyload bg-img"></a>
                                         </div>
@@ -2070,7 +2075,7 @@
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                 class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                 class="fa fa-star"></i></div>
-                                        <a href="product-page(no-sidebar).html">
+                                        <a href="/product/detail/{{trend.id}}/">
                                             <h6>{{trend.name}}</h6>
                                         </a>
                                         <h4>${{trend.price}}</h4>
@@ -2143,14 +2148,14 @@
                                 {%if trend.feature == True %}
                                 <div class="media">
                                     {%for photo in trend.productimage_set.all %}
-                                    <a href="product-page(no-sidebar).html"><img alt=""
+                                    <a href="/product/detail/{{trend.id}}/"><img alt=""
                                             class="img-fluid blur-up lazyload" src="{{photo.image.url}}"></a>
                                             {%endfor%}
                                     <div class="media-body align-self-center">
                                         <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                 class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                                 class="fa fa-star"></i></div>
-                                        <a href="product-page(no-sidebar).html">
+                                        <a href="/product/detail/{{trend.id}}/">
                                             <h6>{{trend.name}}</h6>
                                         </a>
                                         <h4>${{trend.price}}</h4>
@@ -2442,13 +2447,13 @@
                                 <div class="lable-block"><span class="lable3">new</span></div>
                                 {%for photo in trend.productimage_set.all %}
                                 <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img alt=""
+                                    <a href="/product/detail/{{trend.id}}"><img alt=""
                                             src="{{photo.image.url}}"
                                             class="img-fluid blur-up lazyload bg-img"></a>
                                 </div>
                                 {%endfor%}
                                 <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img alt=""
+                                    <a href="/product/detail/{{trend.id}}"><img alt=""
                                             src="{{photo.image.url}}"
                                             class="img-fluid blur-up lazyload bg-img"></a>
                                 </div>
@@ -2985,9 +2990,9 @@
             <div class="cart_media">
             
                 <ul class="cart_product">
-                    {% for item in cart.product.all %}
+                    {% for item in cart_item %}
                     <li>
-                        {%for photo in item.productimage_set.all%}
+                        {%for photo in item.product.productimage_set.all%}
                         <div class="media">
                             <a href="#">
                                 <img alt="" class="mr-3" src="{{photo.image.url}}">
@@ -2995,10 +3000,10 @@
                             {%endfor%}
                             <div class="media-body">
                                 <a href="#">
-                                    <h4>{{item}}</h4>
+                                    <h4>{{item.product}}</h4>
                                 </a>
                                 <h4>
-                                    <span>{{item.Quantity}} x &#x20B9;&nbsp;{{item.price}}</span>
+                                    <span>{{item.product.Quantity}} x &#x20B9;&nbsp;{{item.product.price}}</span>
                                 </h4>
                             </div>
                         </div>

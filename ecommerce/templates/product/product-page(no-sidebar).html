@@ -916,8 +916,8 @@
                         <div class="product-right">
                             <h2 class="mb-0">{{pro_detail.name}}</h2>
                             <h5 class="mb-2">by <a href="#">{{pro_detail.reference}}</a></h5>
-                            <h4><del>${{pro_detail.price}}</del><span>55% off</span></h4>
-                            <h3>{{por_detail.newprice}}</h3>
+                            <h4><del>&#8377;&nbsp;{{pro_detail.price}}</del><span>55% off</span></h4>
+                            <h3>&#8377;&nbsp;{{pro_detail.newprice}}</h3>
                             {%for color in pro_detail.colors.all %}
                             <div class="d-inline-flex justify-content-center" >
                                 <div class="px-2">{{color.name}}</div>
@@ -941,29 +941,46 @@
                                         </div>
                                     </div>
                                 </div>
+                                <form method="POST" action="/cart/update_cart/{{pro_detail.id}}/">
+                                    {% csrf_token %}
                                 <div class="size-box">
+                                    
                                     {%for size in pro_detail.size.all %}
 
                                     <div class="d-inline-flex justify-content-center">
-                                        <div class="px-2"><a href="#">{{size.size}}</a></div>
-                                       
+                                            <ul><option>
+                                                <li><a href="">{{size.size}}</a></li>
+                                            </option>
+                                                
+                                            </ul>
                                         </div>
                                     {%endfor%}
                                 </div>
-                                <h6 class="product-title">{{pro_detail.quantity}}</h6>
+                                <h4>Quantity</h4>
+                                <!-- <h6 class="product-title">{{pro_detail.Quantity}}</h6> -->
+                                
                                 <div class="qty-box">
                                     <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-left-minus" data-type="minus" data-field=""><i
                                                     class="ti-angle-left"></i></button> </span>
-                                        <input type="text" name="quantity" class="form-control input-number" value="1">
+                                        <input type="text" id="qty" name="qty" class="form-control input-number" value="1" >
                                         <span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-right-plus" data-type="plus" data-field=""><i
-                                                    class="ti-angle-right"></i></button></span></div>
+                                                    class="ti-angle-right"></i></button></span>
+                                        
+                                    </div>
+                                    
+                                    
                                 </div>
+                                <br></br>
+                                <div class="product-buttons">
+                                    <input class="btn btn-solid" type="submit" value="Add to cart">&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input class="btn btn-solid" type="submit" value="BY NOW">
+
+                               </div>
+                                </form>
                             </div>
-                            <div class="product-buttons"><a href="/cart/updata_cart<int:id>/" data-toggle="modal" data-target="#addtocart"
-                                    class="btn btn-solid">add to cart</a> <a href="#" class="btn btn-solid">buy now</a>
-                            </div>
+                            
                             <div class="border-product">
                                 <h6 class="product-title">product details</h6>
                                 <p>{{pro_detail.discripsion}}</p>
@@ -1094,7 +1111,7 @@
                         </div>
                         <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
                             <form class="theme-form">
-                                <div class="form-row">
+                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="media">
                                             <label>Rating</label>
@@ -1146,49 +1163,56 @@
                     <h2>related products</h2>
                 </div>
             </div>
+        <!-- <div class="tab-content-cls">
+            <div id="tab-1" class="tab-content active default"> -->
+                <div class="product-4 product-m no-arrow">
+                    {%for item in suggest_product %}
+                    {%if item.trending == True %}
+                    <div class="col-md-12">
+                        <div class="product-box product-wrap">
 
-            <div class="row search-product">
-                {%for item in suggest_product %}
-                <div class="col-xl-2 col-md-4 col-sm-6">
-                    <div class="product-box">
-                        <div class="img-wrapper">
-                            {%for photo in item.productimage_set.all%}
-                            <div class="front">
-                                <a href="#"><img src="{{photo.image.url}}"
-                                class="img-fluid blur-up lazyload bg-img" alt=""></a></div>
-                            {%endfor%}
+                            <div class="img-wrapper">
+                                {%for photo in item.productimage_set.all%}
+                                <div class="front">
+                                    <a href="/product/detail/{{item.id}}/"><img src="{{photo.image.url}}"
+                                    class="img-fluid blur-up lazyload bg-img" alt=""></a></div>
+                                {%endfor%}
 
-                            {%for photo in item.productimage_set.all%}
-                            <div class="back">
-                                <a href="#"><img src="{{photo.image.url}}"
-                                class="img-fluid blur-up lazyload bg-img" alt=""></a></div>
-                            {%endfor%}
+                                {%for photo in item.productimage_set.all%}
+                                <div class="back">
+                                    <a href="/product/detail/{{item.id}}/"><img src="{{photo.image.url}}"
+                                    class="img-fluid blur-up lazyload bg-img" alt=""></a></div>
+                                {%endfor%}
 
-                            <div class="cart-info cart-wrap">
-                                <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                    title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                    title="Compare"><i class="ti-reload" aria-hidden="true"></i></a></div>
-                        </div>
-                        <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                            <a href="product-page(no-sidebar).html">
-                                <h6>{{item.name}}</h6>
-                            </a>
-                            <h4>${{item.price}}</h4>
-                            {%for color in item.colors.all %}
-                            <div class="d-inline-flex justify-content-center" >
-                                <div class="px-2">{{color.name}}</div>  
+                                <div class="cart-info cart-wrap">
+                                    <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i
+                                            class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
+                                        title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                        data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                            class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
+                                        title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                                </div>
                             </div>
-                            {%endfor%}   
+                            <div class="product-detail">
+                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                        class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                <a href="product-page(no-sidebar).html">
+                                    <h6>{{item.name}}</h6>
+                                </a>
+                                <h4>${{item.price}}</h4>
+                                {%for color in item.colors.all %}
+                                <div class="d-inline-flex justify-content-center" >
+                                    <div class="px-2">{{color.name}}</div>  
+                                </div>
+                                {%endfor%}   
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
+                        </div>
+                        {%endif%}
+                        {%endfor%}  
                 </div>
+      
                <!-- <div class="col-xl-2 col-md-4 col-sm-6">
                     <div class="product-box">
                         <div class="img-wrapper">
@@ -1359,9 +1383,6 @@
                         </div>
                     </div>
                 </div> -->
-                {%endfor%}
-
-            </div>
 
         </div>
 

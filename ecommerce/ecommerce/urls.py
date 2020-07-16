@@ -20,12 +20,17 @@ from django.conf.urls.static import static
 from home import views
 from cart import views
 from product import views
+from userprofile import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home.urls')),
     path('product/',include('product.urls')),
-    path('cart/',include('cart.urls'))
+    path('cart/',include('cart.urls')),
+    path('checkout/',include('checkout.urls')),
+    path('userprofile/',include('userprofile.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    #path('accounts/logout/', include('django.contrib.auth.urls')), 
 
 
     

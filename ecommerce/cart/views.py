@@ -2,8 +2,10 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.urls import reverse
 from cart.models import Cart,CartItem
 from product.models import Product
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required
 def cart_item(requst):
     try:
         main_id = requst.session['cart_id']

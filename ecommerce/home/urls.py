@@ -4,5 +4,6 @@ urlpatterns=[
 
     
     path('',views.home,name='home page'),
+    path('base/',views.base,name="base page")
     
 ]

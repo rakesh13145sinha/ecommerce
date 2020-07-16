@@ -7,6 +7,7 @@ from cart.models import Cart,CartItem
 # Create your views here.
 
 def home(request):
+    
     slide=Slider.objects.all()
     para=Parallex.objects.all()
     trending_item=Product.objects.all()
@@ -27,3 +28,5 @@ def home(request):
                     }
     return render(request,'templates/home/bags.html',context)
     
+def base(request):
+    return render(request,'templates/home/base.html')

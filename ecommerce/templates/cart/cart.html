@@ -59,19 +59,24 @@
                         <ul class="header-dropdown">
                             <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
                             </li>
+                            
                             <li class="onhover-dropdown mobile-account">
-                                <i class="fa fa-user" aria-hidden="true"></i> My Account
+                             {%if user.is_authenticated%}<i class="fa fa-user" aria-hidden="true"></i>{{user.username}}{%else%}
+                            Hi Visitor {%endif%}
                                 <ul class="onhover-show-div">
+                                    {%if user.is_authenticated%}
                                     <li>
-                                        <a href="#" data-lng="en">
-                                            Login
+                                        <a href="/accounts/logout/" data-lng="en">
+                                            logout
                                         </a>
                                     </li>
+                                    {%else%}
                                     <li>
-                                        <a href="#" data-lng="es">
+                                        <a href="/accounts/login/" data-lng="es">
                                             Logout
                                         </a>
                                     </li>
+                                    {%endif%}
                                 </ul>
                             </li>
                         </ul>
@@ -781,7 +786,7 @@
             </div>
             <div class="row cart-buttons">
                 <div class="col-6"><a href="/" class="btn btn-solid">continue shopping</a></div>
-                <div class="col-6"><a href="#" class="btn btn-solid">check out</a></div>
+                <div class="col-6"><a href="/checkout/payment/" class="btn btn-solid">check out</a></div>
             </div>
         </div>
     </section>

@@ -10,9 +10,9 @@
     <meta name="description" content="multikart">
     <meta name="keywords" content="multikart">
     <meta name="author" content="multikart">
-    <link rel="icon" href="{%static 'images/favicon/3.png'%}" type="image/x-icon" />
-    <link rel="shortcut icon" href="{%static 'images/favicon/3.png'%}" type="image/x-icon" />
-    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
+    <link rel="icon" href="{%static 'images/favicon/favicon.png'%}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{%static 'images/favicon/favicon.png'%}" type="image/x-icon" />
+    <title>Analog - Multi-purpopse E-commerce Html Template</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -50,7 +50,7 @@
                         <div class="col-lg-6">
                             <div class="header-contact">
                                 <ul>
-                                    <li>Welcome to Our store Multikart</li>
+                                    <li>Welcome to Our store Analog</li>
                                     <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
                                 </ul>
                             </div>
@@ -60,7 +60,7 @@
                                 <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>
                                         wishlist</a></li>
                                 <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
-                                    My Account
+                                    
                                 </li>
                             </ul>
                         </div>
@@ -107,7 +107,7 @@
                             </div>
                             <div class="absolute-logo">
                                 <div class="brand-logo">
-                                    <a href="#"><img alt="" src="{%static 'images/icon/layout3/logo.png'%}"></a>
+                                    <a href="#"><img alt="" src="{%static 'images/icon/layout3/analog_logo.png'%}"></a>
                                 </div>
                             </div>
                             <div class="">
@@ -220,23 +220,28 @@
                     <div class="col-lg-6">
                         <div class="header-contact">
                             <ul>
-                                <li>Welcome to Our store Multikart</li>
+                                <li>Welcome to Our store Analog</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 text-right">
+                        {%if user.is_authenticated%}
                         <ul class="header-dropdown">
                             <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>
                                     wishlist</a></li>
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
-                                My Account
+                                {{user.username}}
                                 <ul class="onhover-show-div">
-                                    <li><a href="#" data-lng="en">Login</a></li>
-                                    <li><a href="#" data-lng="es">Logout</a></li>
+                                    <li><a href="/accounts/logout/" data-lng="en">Logout</a></li>
+                                    {%else%}
+
+                                    <li><a href="/accounts/login/" data-lng="es">Login</a></li>
+
                                 </ul>
                             </li>
                         </ul>
+                        {%endif%}
                     </div>
                 </div>
             </div>
@@ -707,7 +712,7 @@
                         </div>
                         <div class="absolute-logo">
                             <div class="brand-logo">
-                                <a href="#"><img alt="" src="{%static 'images/icon/layout3/logo.png'%}"></a>
+                                <a href="#"><img alt="" src="{%static 'images/icon/layout3/analog_logo.png'%}"></a>
                             </div>
                         </div>
                         <div class="">
@@ -880,7 +885,7 @@
                                             <a href="/product/detail/{{trend.id}}/">
                                                 <h6>{{trend.name}}</h6>
                                             </a>
-                                            <h4>₹{{trend.newprice}} <del>₹{{trend.price}}</del></h4>
+                                            <h4>₹{{trend.price}} <del>₹{{trend.newprice}}</del></h4>
                                             <ul class="color-variant">
                                                 <li class="bg-light0"></li>
                                                 <li class="bg-light1"></li>
@@ -1939,7 +1944,7 @@
                                         <a href="/product/detail/{{trend.id}}/">
                                             <h6>{{trend.name}}</h6>
                                         </a>
-                                        <h4>${{trend.price}}</h4>
+                                        <h4>₹{{trend.price}}</h4>
                                     </div>
                                 </div>
                                 {%endif%}
@@ -2078,7 +2083,7 @@
                                         <a href="/product/detail/{{trend.id}}/">
                                             <h6>{{trend.name}}</h6>
                                         </a>
-                                        <h4>${{trend.price}}</h4>
+                                        <h4>₹{{trend.price}}</h4>
                                         <ul class="color-variant">
                                             <li class="bg-light0"></li>
                                             <li class="bg-light1"></li>
@@ -2158,7 +2163,7 @@
                                         <a href="/product/detail/{{trend.id}}/">
                                             <h6>{{trend.name}}</h6>
                                         </a>
-                                        <h4>${{trend.price}}</h4>
+                                        <h4>₹{{trend.price}}</h4>
                                     </div>
                                 </div>
                                 {%endif%}
@@ -2470,7 +2475,7 @@
                                 <a href="product-page(no-sidebar).html">
                                     <h6>{{trend.name}}</h6>
                                 </a>
-                                <h4>${{trend.price}}</h4>
+                                <h4>₹{{trend.price}}</h4>
                                 <ul class="color-variant">
                                     <li class="bg-light1"></li>
                                     <li class="bg-light1"></li>
@@ -2864,7 +2869,7 @@
                                 <h4>about</h4>
                             </div>
                             <div class="footer-contant">
-                                <div class="footer-logo"><img src="{%static 'images/icon/layout3/footerlogo.png'%}" alt="">
+                                <div class="footer-logo"><img src="{%static 'images/icon/layout3/Analog_logo.png'%}" alt="">
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                     incididunt ut labore et.Lorem ipsum dolor sit amet, consectetur adipiscing</p>
@@ -2888,9 +2893,9 @@
                             </div>
                             <div class="footer-contant">
                                 <ul class="contact-details">
-                                    <li>Multikart Demo Store, Demo store India 345-659</li>
+                                    <li>Analog Demo Store, Demo store India 345-659</li>
                                     <li>Call Us: 123-456-7898</li>
-                                    <li>Email Us: <a href="#">Support@Fiot.com</a></li>
+                                    <li>Email Us: <a href="#">Srikanthanalogit@gmail.com</a></li>
                                     <li>Fax: 123456</li>
                                 </ul>
                             </div>
@@ -2942,8 +2947,8 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-6 col-sm-12">
                         <div class="footer-end">
-                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2017-18 themeforest powered by
-                                pixelstrap</p>
+                            <p><i class="fa fa-copyright" aria-hidden="true"></i> 2018-19  powered by
+                                Analog It solution</p>
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6 col-sm-12">
@@ -3090,7 +3095,7 @@
                         <div class="col-lg-6 rtl-text">
                             <div class="product-right">
                                 <h2>Women Pink Shirt</h2>
-                                <h3>$32.96</h3>
+                                <h3>₹32.96</h3>
                                 <ul class="color-variant">
                                     <li class="bg-light0"></li>
                                     <li class="bg-light1"></li>
@@ -3828,16 +3833,16 @@
                 <div class="buy_btn">
                     <a href="https://themeforest.net/item/multikart-responsive-ecommerce-html-template/22809967?s_rank=1"
                         target="_blank" class="btn btn-block purchase_btn"><i class="fa fa-shopping-cart"
-                            aria-hidden="true"></i> purchase Multikart now!</a>
+                            aria-hidden="true"></i> purchase Analog now!</a>
                     <a href="https://themeforest.net/item/multikart-responsive-angular-ecommerce-template/22905358?s_rank=3"
                         target="_blank" class="btn btn-block purchase_btn"><img src="{%static 'images/icon/angular.png'%}"
-                            alt="" class="img-fluid"> Multikart Angular</a>
+                            alt="" class="img-fluid"> Analog Angular</a>
                     <a href="https://themeforest.net/item/multikart-responsive-react-ecommerce-template/23067773?s_rank=2"
                         target="_blank" class="btn btn-block purchase_btn"><img src="{%static 'images/icon/react.png'%}"
-                            alt="" class="img-fluid"> Multikart React</a>
+                            alt="" class="img-fluid"> Analog React</a>
                     <a href="https://themeforest.net/item/multikart-multipurpose-shopify-sections-theme/23093831?s_rank=1"
                         target="_blank" class="btn btn-block purchase_btn"><img src="{%static 'images/icon/shopify.png'%}"
-                            alt="" class="img-fluid"> Multikart Shopify</a>
+                            alt="" class="img-fluid"> Analog Shopify</a>
                 </div>
             </div>
         </div>

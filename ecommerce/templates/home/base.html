@@ -9,7 +9,7 @@
     <h1>hi this page is testing purpose for session</h1>
     {{msg}}
     {%for item in cart.cartitem_set.all%}
-    {{cart_item.product.name}}
+    {{item.product.name}}
     {%endfor%}
     
     {{cart.total}}
